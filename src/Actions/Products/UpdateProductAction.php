@@ -26,40 +26,51 @@ class UpdateProductAction extends Action
 
     /**
      * @OA\Put(
-     *   tags={"products"},
-     *   path="/v1/updateProduct/{id}",
-     *   summary="Update product",
-     *   @OA\Parameter(
-     *     in="path",
-     *     name="id",
-     *     required=true,
-     *     @OA\Schema(
-     *       type="integer",
-     *       pattern="[0-9]+"
+     *     tags={"products"},
+     *     path="/updateProduct/{id}",
+     *     summary="Update product",
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         description="Numeric ID of the product to update",
+     *         @OA\Schema(
+     *             type="integer",
+     *             pattern="[0-9]+"
+     *         ),
      *     ),
-     *   ),
-     *   @OA\RequestBody(
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         ref="#/components/schemas/ProductForm"
-     *       )
-     *     )
-     *   ),
-     *   @OA\Response(
-     *     response=200,
-     *     description="Successful operation",
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         @OA\Property(
-     *           property="message",
-     *           type="string",
-     *           example="Product updated succesfully",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/ProductForm"
+     *             )
      *         )
-     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="message",
+     *                     type="string",
+     *                     example="Product updated succesfully",
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/InternalServerError"
+     *             )
+     *         )
      *     )
-     *   )
      * )
      *
      * Update product

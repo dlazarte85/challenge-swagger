@@ -26,32 +26,43 @@ class DeleteProductAction extends Action
 
     /**
      * @OA\Delete(
-     *   tags={"products"},
-     *   path="/v1/deleteProduct/{id}",
-     *   summary="Delete product",
-     *   @OA\Parameter(
-     *     in="path",
-     *     name="id",
-     *     required=true,
-     *     @OA\Schema(
-     *       type="integer",
-     *       pattern="[0-9]+"
+     *     tags={"products"},
+     *     path="/deleteProduct/{id}",
+     *     summary="Delete product",
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         description="Numeric ID of the product to delete",
+     *         @OA\Schema(
+     *             type="integer",
+     *             pattern="[0-9]+"
+     *         ),
      *     ),
-     *   ),
-     *   @OA\Response(
-     *     response=200,
-     *     description="Successful operation",
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         @OA\Property(
-     *           property="message",
-     *           type="string",
-     *           example="Product deleted succesfully",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="message",
+     *                     type="string",
+     *                     example="Product deleted succesfully",
+     *                 )
+     *             )
      *         )
-     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/InternalServerError"
+     *             )
+     *         )
      *     )
-     *   )
      * )
      *
      * Delete product

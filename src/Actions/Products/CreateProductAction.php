@@ -27,31 +27,41 @@ class CreateProductAction extends Action
 
     /**
      * @OA\Post(
-     *   tags={"products"},
-     *   path="/v1/createProduct",
-     *   summary="Create product",
-     *   @OA\RequestBody(
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         ref="#/components/schemas/ProductForm"
-     *       )
-     *     )
-     *   ),
-     *   @OA\Response(
-     *     response=201,
-     *     description="Successful operation",
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         @OA\Property(
-     *           property="message",
-     *           type="string",
-     *           example="Product created succesfully",
+     *     tags={"products"},
+     *     path="/createProduct",
+     *     summary="Create product",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/ProductForm"
+     *             )
      *         )
-     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=201,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="message",
+     *                     type="string",
+     *                     example="Product created succesfully",
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/InternalServerError"
+     *             )
+     *         )
      *     )
-     *   )
      * )
      *
      * Create product

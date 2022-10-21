@@ -24,28 +24,39 @@ class GetProductBySlugAction extends Action
 
     /**
      * @OA\Get(
-     *   tags={"products"},
-     *   path="/v1/products/{slug}",
-     *   summary="Get Product by Slug",
-     *   @OA\Parameter(
-     *     in="path",
-     *     name="slug",
-     *     required=true,
-     *     @OA\Schema(
-     *       type="string",
-     *       pattern="[0-9-a-zA-Z]+"
+     *     tags={"products"},
+     *     path="/products/{slug}",
+     *     summary="Get Product by Slug",
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="slug",
+     *         required=true,
+     *         description="Slug of the product to get",
+     *         @OA\Schema(
+     *             type="string",
+     *             pattern="[0-9-a-zA-Z]+"
+     *         ),
      *     ),
-     *   ),
-     *   @OA\Response(
-     *     response=200,
-     *     description="Successful operation",
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         ref="#/components/schemas/Product"
-     *       )
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/Product"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/InternalServerError"
+     *             )
+     *         )
      *     )
-     *   )
      * )
      *
      * Get product by slug

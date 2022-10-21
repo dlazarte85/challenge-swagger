@@ -27,22 +27,32 @@ final class ViewAllProductsAction extends Action
 
     /**
      * @OA\Get(
-     *   tags={"products"},
-     *   path="/v1/products",
-     *   summary="List all Products",
-     *   @OA\Response(
-     *     response=200,
-     *     description="Successful operation",
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         type="array",
-     *         @OA\Items(
-     *           ref="#/components/schemas/Product"
+     *     tags={"products"},
+     *     path="/products",
+     *     summary="List all Products",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="array",
+     *                 @OA\Items(
+     *                     ref="#/components/schemas/Product"
+     *                 )
+     *             )
      *         )
-     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/InternalServerError"
+     *             )
+     *         )
      *     )
-     *   )
      * )
      *
      * Fetch all products and returns response

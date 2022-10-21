@@ -2,16 +2,20 @@ openapi: 3.0.0
 info:
   title: 'Challenge Diego Lazarte'
   version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8080/v1/'
+    description: 'Challenge API server'
 paths:
-  /v1/createProduct:
+  /createProduct:
     post:
       tags:
         - products
       summary: 'Create product'
-      operationId: 8b5ee46e22961bc812d9b8951bd93008
+      operationId: 05adfcdc607edd78b3f57ed18e32778a
       requestBody:
         content:
-          application/json:
+          multipart/form-data:
             schema:
               $ref: '#/components/schemas/ProductForm'
       responses:
@@ -23,16 +27,23 @@ paths:
                 properties:
                   message: { type: string, example: 'Product created succesfully' }
                 type: object
-  '/v1/deleteProduct/{id}':
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  '/deleteProduct/{id}':
     delete:
       tags:
         - products
       summary: 'Delete product'
-      operationId: e16af44395da5f537a4db6d342563df1
+      operationId: 4ed2d98b19d0efa8edc699c0e7d377f0
       parameters:
         -
           name: id
           in: path
+          description: 'Numeric ID of the product to delete'
           required: true
           schema:
             type: integer
@@ -46,16 +57,23 @@ paths:
                 properties:
                   message: { type: string, example: 'Product deleted succesfully' }
                 type: object
-  '/v1/products/{id}':
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  '/products/{id}':
     get:
       tags:
         - products
       summary: 'Get Product by Id'
-      operationId: a8bc3b1f5e0a7ee63f7c61d5900a3727
+      operationId: b95bc49c3918be7783aa08b0fa4588eb
       parameters:
         -
           name: id
           in: path
+          description: 'Numeric ID of the product to get'
           required: true
           schema:
             type: integer
@@ -67,16 +85,23 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-  '/v1/products/{slug}':
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  '/products/{slug}':
     get:
       tags:
         - products
       summary: 'Get Product by Slug'
-      operationId: 0f8b1d83c418b26a39d86e9fc5fef51b
+      operationId: ef6949b4bf970208b697d13d84636ab3
       parameters:
         -
           name: slug
           in: path
+          description: 'Slug of the product to get'
           required: true
           schema:
             type: string
@@ -88,12 +113,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
-  /v1/products/search:
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /products/search:
     post:
       tags:
         - products
       summary: 'Search product'
-      operationId: 04b69e64aa62909939a7286bf462264b
+      operationId: 51a205a8e1f8fa7c8013517d17c33f3c
       requestBody:
         content:
           application/json:
@@ -116,16 +147,23 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
-  '/v1/updateProduct/{id}':
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  '/updateProduct/{id}':
     put:
       tags:
         - products
       summary: 'Update product'
-      operationId: c1c71d5d804e4d33347317a360237574
+      operationId: d874fd25378f5a541028153f6eddd43b
       parameters:
         -
           name: id
           in: path
+          description: 'Numeric ID of the product to update'
           required: true
           schema:
             type: integer
@@ -144,12 +182,18 @@ paths:
                 properties:
                   message: { type: string, example: 'Product updated succesfully' }
                 type: object
-  /v1/products:
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+  /products:
     get:
       tags:
         - products
       summary: 'List all Products'
-      operationId: a3a2d1d190c891312f074e45434c61ec
+      operationId: 196883aa751d529e22091ebf57490f6b
       responses:
         '200':
           description: 'Successful operation'
@@ -159,6 +203,12 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Product'
+        '500':
+          description: 'Internal Server Error'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
   /:
     get:
       summary: 'Message Welcome to Product API'
@@ -166,6 +216,10 @@ paths:
       responses:
         '200':
           description: 'Welcome to Product API'
+      servers:
+        -
+          url: 'http://localhost:8080'
+          description: 'Challenge API server'
 components:
   schemas:
     Product:
@@ -207,6 +261,29 @@ components:
           schema: Product
           type: string
           example: monitor
+      type: object
+    InternalServerError:
+      title: InternalServerError
+      properties:
+        message:
+          schema: InternalServerError
+          type: string
+        exception:
+          schema: InternalServerError
+          type: array
+          items:
+            properties:
+              type:
+                type: string
+              code:
+                type: integer
+              message:
+                type: string
+              file:
+                type: string
+              line:
+                type: integer
+            type: object
       type: object
     ProductForm:
       title: ProductForm

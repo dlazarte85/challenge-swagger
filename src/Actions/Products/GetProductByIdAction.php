@@ -24,28 +24,39 @@ class GetProductByIdAction extends Action
 
     /**
      * @OA\Get(
-     *   tags={"products"},
-     *   path="/v1/products/{id}",
-     *   summary="Get Product by Id",
-     *   @OA\Parameter(
-     *     in="path",
-     *     name="id",
-     *     required=true,
-     *     @OA\Schema(
-     *       type="integer",
-     *       pattern="[0-9]+"
+     *     tags={"products"},
+     *     path="/products/{id}",
+     *     summary="Get Product by Id",
+     *     @OA\Parameter(
+     *         in="path",
+     *         name="id",
+     *         required=true,
+     *         description="Numeric ID of the product to get",
+     *         @OA\Schema(
+     *             type="integer",
+     *             pattern="[0-9]+"
+     *         ),
      *     ),
-     *   ),
-     *   @OA\Response(
-     *     response=200,
-     *     description="Successful operation",
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         ref="#/components/schemas/Product"
-     *       )
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/Product"
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                ref="#/components/schemas/InternalServerError"
+     *             )
+     *         )
      *     )
-     *   )
      * )
      *
      * Get product by id

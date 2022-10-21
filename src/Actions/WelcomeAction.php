@@ -16,12 +16,16 @@ final class WelcomeAction extends Action
 
     /**
      * @OA\Get(
-     *   path="/",
-     *   summary="Message Welcome to Product API",
-     *   @OA\Response(
-     *     response=200,
-     *     description="Welcome to Product API"
-     *   )
+     *     path="/",
+     *     summary="Message Welcome to Product API",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Welcome to Product API"
+     *     ),
+     *     @OA\Server(
+     *         url="http://localhost:8080",
+     *         description="Challenge API server"
+     *     )
      * )
      *
      * Returns welcome message

@@ -8,7 +8,7 @@ use OpenApi\Annotations as OA;
  * @OA\Schema(
  *     schema="ProductForm",
  *     type="object",
- *     title="ProductForm"
+ *     title="ProductForm",
  * )
  * @OA\Property(
  *     property="name",
@@ -23,7 +23,7 @@ use OpenApi\Annotations as OA;
  * @OA\Property(
  *     property="description",
  *     type="string",
- *     example="Teclado gammer",
+ *     example="Teclado gamer",
  * ),
  * @OA\Property(
  *     property="price",
@@ -38,7 +38,7 @@ use OpenApi\Annotations as OA;
  * @OA\Property(
  *     property="keywords",
  *     type="string",
- *     example="teclado,gammer",
+ *     example="teclado,gamer",
  * )
  *
  */

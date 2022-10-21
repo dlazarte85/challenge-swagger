@@ -26,38 +26,48 @@ class SearchProductAction extends Action
 
     /**
      * @OA\Post(
-     *   tags={"products"},
-     *   path="/v1/products/search",
-     *   summary="Search product",
-     *   @OA\RequestBody(
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         @OA\Property(
-     *           property="name",
-     *           type="string",
-     *         ),
-     *         @OA\Property(
-     *           property="keywords",
-     *           type="string"
-     *         ),
-     *         example={"name": "Monitor", "keywords": "monitor"}
-     *       )
-     *     )
-     *   ),
-     *   @OA\Response(
-     *     response=200,
-     *     description="Successful operation",
-     *     @OA\MediaType(
-     *       mediaType="application/json",
-     *       @OA\Schema(
-     *         type="array",
-     *         @OA\Items(
-     *           ref="#/components/schemas/Product"
+     *     tags={"products"},
+     *     path="/products/search",
+     *     summary="Search product",
+     *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 @OA\Property(
+     *                     property="name",
+     *                     type="string",
+     *                 ),
+     *                 @OA\Property(
+     *                     property="keywords",
+     *                     type="string"
+     *                 ),
+     *                 example={"name": "Monitor", "keywords": "monitor"}
+     *             )
      *         )
-     *       )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="Successful operation",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 type="array",
+     *                 @OA\Items(
+     *                     ref="#/components/schemas/Product"
+     *                 )
+     *             )
+     *         )
+     *     ),
+     *     @OA\Response(
+     *         response=500,
+     *         description="Internal Server Error",
+     *         @OA\MediaType(
+     *             mediaType="application/json",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/InternalServerError"
+     *             )
+     *         )
      *     )
-     *   )
      * )
      *
      * Search products

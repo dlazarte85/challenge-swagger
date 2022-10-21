@@ -20,6 +20,10 @@ use Slim\App;
  *     title="Challenge Diego Lazarte",
  *     version="1.0.0",
  * )
+ * @OA\Server(
+ *     url="http://localhost:8080/v1/",
+ *     description="Challenge API server"
+ * )
  */
 class Application
 {
