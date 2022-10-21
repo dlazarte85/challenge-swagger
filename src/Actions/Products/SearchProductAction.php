@@ -31,17 +31,15 @@ class SearchProductAction extends Action
      *     summary="Search product",
      *     @OA\RequestBody(
      *         @OA\MediaType(
+     *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/ProductForm"
+     *             )
+     *         ),
+     *         @OA\MediaType(
      *             mediaType="application/json",
      *             @OA\Schema(
-     *                 @OA\Property(
-     *                     property="name",
-     *                     type="string",
-     *                 ),
-     *                 @OA\Property(
-     *                     property="keywords",
-     *                     type="string"
-     *                 ),
-     *                 example={"name": "Monitor", "keywords": "monitor"}
+     *                 ref="#/components/schemas/ProductForm"
      *             )
      *         )
      *     ),

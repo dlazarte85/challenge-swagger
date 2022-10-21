@@ -19,6 +19,10 @@ use Slim\App;
  * @OA\Info(
  *     title="Challenge Diego Lazarte",
  *     version="1.0.0",
+ *     @OA\Contact(
+ *         email="diego.lazarte@avalith.net",
+ *         name="Diego Lazarte"
+ *     ),
  * )
  * @OA\Server(
  *     url="http://localhost:8080/v1/",

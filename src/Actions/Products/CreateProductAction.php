@@ -31,8 +31,16 @@ class CreateProductAction extends Action
      *     path="/createProduct",
      *     summary="Create product",
      *     @OA\RequestBody(
+     *         description="Product to add",
+     *         required=true,
      *         @OA\MediaType(
      *             mediaType="multipart/form-data",
+     *             @OA\Schema(
+     *                 ref="#/components/schemas/ProductForm"
+     *             )
+     *         ),
+     *         @OA\MediaType(
+     *             mediaType="application/json",
      *             @OA\Schema(
      *                 ref="#/components/schemas/ProductForm"
      *             )

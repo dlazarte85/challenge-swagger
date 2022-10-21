@@ -1,6 +1,9 @@
 openapi: 3.0.0
 info:
   title: 'Challenge Diego Lazarte'
+  contact:
+    name: 'Diego Lazarte'
+    email: diego.lazarte@avalith.net
   version: 1.0.0
 servers:
   -
@@ -14,8 +17,13 @@ paths:
       summary: 'Create product'
       operationId: 05adfcdc607edd78b3f57ed18e32778a
       requestBody:
+        description: 'Product to add'
+        required: true
         content:
           multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductForm'
+          application/json:
             schema:
               $ref: '#/components/schemas/ProductForm'
       responses:
@@ -127,17 +135,12 @@ paths:
       operationId: 51a205a8e1f8fa7c8013517d17c33f3c
       requestBody:
         content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductForm'
           application/json:
             schema:
-              properties:
-                name:
-                  type: string
-                keywords:
-                  type: string
-              type: object
-              example:
-                name: Monitor
-                keywords: monitor
+              $ref: '#/components/schemas/ProductForm'
       responses:
         '200':
           description: 'Successful operation'
@@ -299,7 +302,7 @@ components:
         description:
           schema: ProductForm
           type: string
-          example: 'Teclado gammer'
+          example: 'Teclado gamer'
         price:
           schema: ProductForm
           type: string
@@ -311,5 +314,5 @@ components:
         keywords:
           schema: ProductForm
           type: string
-          example: 'teclado,gammer'
+          example: 'teclado,gamer'
       type: object
