@@ -34,31 +34,7 @@ class CreateProductAction extends Action
      *     @OA\MediaType(
      *       mediaType="application/json",
      *       @OA\Schema(
-     *         @OA\Property(
-     *           property="name",
-     *           type="string",
-     *         ),
-     *         @OA\Property(
-     *           property="slug",
-     *           type="string",
-     *         ),
-     *         @OA\Property(
-     *           property="description",
-     *           type="string"
-     *         ),
-     *         @OA\Property(
-     *           property="price",
-     *           type="integer"
-     *         ),
-     *         @OA\Property(
-     *           property="stock",
-     *           type="integer"
-     *         ),
-     *         @OA\Property(
-     *           property="keywords",
-     *           type="string"
-     *         ),
-     *         example={"name": "Monitor", "slug": "monitor", "description": "Monitor 20' pulgadas", "price": 45499.99, "stock": 13, "keywords": "monitor"}
+     *         ref="#/components/schemas/ProductForm"
      *       )
      *     )
      *   ),

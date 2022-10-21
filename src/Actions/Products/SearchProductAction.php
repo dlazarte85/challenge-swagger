@@ -28,7 +28,7 @@ class SearchProductAction extends Action
      * @OA\Post(
      *   tags={"products"},
      *   path="/v1/products/search",
-     *   summary="Create product",
+     *   summary="Search product",
      *   @OA\RequestBody(
      *     @OA\MediaType(
      *       mediaType="application/json",
@@ -38,26 +38,10 @@ class SearchProductAction extends Action
      *           type="string",
      *         ),
      *         @OA\Property(
-     *           property="slug",
-     *           type="string",
-     *         ),
-     *         @OA\Property(
-     *           property="description",
-     *           type="string"
-     *         ),
-     *         @OA\Property(
-     *           property="price",
-     *           type="integer"
-     *         ),
-     *         @OA\Property(
-     *           property="stock",
-     *           type="integer"
-     *         ),
-     *         @OA\Property(
      *           property="keywords",
      *           type="string"
      *         ),
-     *         example={"name": "Monitor", "slug": "monitor", "description": "Monitor 20' pulgadas", "price": 45499.99, "stock": 13, "keywords": "mon"}
+     *         example={"name": "Monitor", "keywords": "monitor"}
      *       )
      *     )
      *   ),

@@ -17,8 +17,8 @@ use Slim\App;
 
 /**
  * @OA\Info(
- *   title="Challenge Diego Lazarte",
- *   version="1.0.0",
+ *     title="Challenge Diego Lazarte",
+ *     version="1.0.0",
  * )
  */
 class Application

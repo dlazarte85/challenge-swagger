@@ -13,27 +13,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                name:
-                  type: string
-                slug:
-                  type: string
-                description:
-                  type: string
-                price:
-                  type: integer
-                stock:
-                  type: integer
-                keywords:
-                  type: string
-              type: object
-              example:
-                name: Monitor
-                slug: monitor
-                description: "Monitor 20' pulgadas"
-                price: 45499.99
-                stock: 13
-                keywords: monitor
+              $ref: '#/components/schemas/ProductForm'
       responses:
         '201':
           description: 'Successful operation'
@@ -112,7 +92,7 @@ paths:
     post:
       tags:
         - products
-      summary: 'Create product'
+      summary: 'Search product'
       operationId: 04b69e64aa62909939a7286bf462264b
       requestBody:
         content:
@@ -121,24 +101,12 @@ paths:
               properties:
                 name:
                   type: string
-                slug:
-                  type: string
-                description:
-                  type: string
-                price:
-                  type: integer
-                stock:
-                  type: integer
                 keywords:
                   type: string
               type: object
               example:
                 name: Monitor
-                slug: monitor
-                description: "Monitor 20' pulgadas"
-                price: 45499.99
-                stock: 13
-                keywords: mon
+                keywords: monitor
       responses:
         '200':
           description: 'Successful operation'
@@ -166,27 +134,7 @@ paths:
         content:
           application/json:
             schema:
-              properties:
-                name:
-                  type: string
-                slug:
-                  type: string
-                description:
-                  type: string
-                price:
-                  type: integer
-                stock:
-                  type: integer
-                keywords:
-                  type: string
-              type: object
-              example:
-                name: Monitor
-                slug: monitor
-                description: "Monitor 20' pulgadas"
-                price: 45499.99
-                stock: 13
-                keywords: monitor
+              $ref: '#/components/schemas/ProductForm'
       responses:
         '200':
           description: 'Successful operation'
@@ -261,7 +209,7 @@ components:
           example: monitor
       type: object
     ProductForm:
-      title: AuthorForm
+      title: ProductForm
       properties:
         name:
           schema: ProductForm
